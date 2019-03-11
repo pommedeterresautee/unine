@@ -19,7 +19,7 @@ Indexing verbs for Italian, French or German is not of primary importance compar
 
 ## Installation
 
-You can install the released version of unine from [CRAN](https://CRAN.R-project.org) with:
+You can install the released version of unine from [CRAN](https://CRAN.R-project.org) with: (**NOT YET PUBLISHED**)
 
 ``` r
 install.packages("unine")
@@ -43,7 +43,7 @@ SnowballC::wordStem(c("testament", "tester"), language = "french")
 References
 ----------
 
-Please cite [1](#a-stemming procedure-and-stopword-list-for-general-french-corpora) if using this R package.
+Please cite [1] if using this R package.
 
 ### A stemming procedure and stopword list for general French corpora
 
