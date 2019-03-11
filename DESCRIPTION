@@ -5,9 +5,16 @@ Version: 0.1.0
 Authors@R: c(person("Michaël", "Benesty", role = c("aut", "cre", "cph"), email = "michael@benesty.fr"),
   person("Jacques Savoy", role = c("cph"), email = "Jacques.Savoy@unine.ch"))
 Maintainer: Michaël Benesty <michael@benesty.fr>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Description: Implementation of "light" stemmers for French, German, Italian, Spanish, Portuguese, Finnish, Swedish based on the work described.
+  A "light" stemmer (removing inflections only for noun and adjectives) presents some advantages. 
+  The stemming procedure for French is described in (Savoy, 1999). 
+  In Italian, the main inflectional rule is to modify the final character (e.g., «-o», «-a» or «-e») into another (e.g., «-i», «-e»). 
+  As a second rule, Italian morphology may also alter the final two letters (e.g., «-io» in «-o», «-co» in «-chi», «-ga» in «-ghe»). 
+  In German, a few rules may be applied to obtain the plural form of words (e.g., "Frau" into "Frauen" (woman), "Bild" into "Bilder" (picture), "Sohn" into "Söhne" (son), "Apfel" into "Äpfel" (apple)), but the suggested algorithms do not account for person and tense variations, or for the morphological variations used by verbs.
+  Indexing verbs for Italian, French or German is not of primary importance compared to nouns and adjectives.
+URL: https://github.com/pommedeterresautee/unine, http://members.unine.ch/jacques.savoy/clef/
+BugReports: https://github.com/pommedeterresautee/unine/issues
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 LinkingTo: 
@@ -16,3 +23,5 @@ Imports:
     Rcpp
 RoxygenNote: 6.1.1
 NeedsCompilation: yes
+Suggests: 
+    testthat

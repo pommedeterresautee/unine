@@ -1,3 +1,5 @@
-#' @useDynLib unine
+#' @name unine
+#' @useDynLib unine, .registration = TRUE
 #' @importFrom Rcpp sourceCpp
-NULL
+#' @import methods
+"_PACKAGE"

@@ -11,6 +11,6 @@
 #' french_stemmer(c("tester", "testament", "clients"))
 #' @export
 french_stemmer <- function(words) {
-    .Call('_unine_french_stemmer', PACKAGE = 'unine', words)
+    .Call(`_unine_french_stemmer`, words)
 }
 

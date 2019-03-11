@@ -4,11 +4,7 @@
 using namespace Rcpp;
 using namespace std;
 
-// Implmentation of a light French stemmer (lighter effect than the famous Porter stemmer)
-// from http://members.unine.ch/jacques.savoy/clef/frenchStemmerPlus.txt
-// from http://members.unine.ch/jacques.savoy/clef/frenchStemmer.txt
-// change to wstring to manage UTF-8 characters
-// test http://yomguithereal.github.io/talisman/stemmers/french
+// online tests http://yomguithereal.github.io/talisman/stemmers/french
 
 u16string removeAllFEAccent (u16string word) {
     int len = word.size() -1;
