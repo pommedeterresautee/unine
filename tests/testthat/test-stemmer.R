@@ -16,23 +16,30 @@ test_that("German - test simple words", {
 })
 
 test_that("Spanish - test simple words", {
-  expect_equal(object = french_stemmer(words = c("perros")),
-               expected = c("pero"))
+  expect_equal(object = spanish_stemmer(words = c("perros")),
+               expected = c("perr"))
 })
 
-test_that("Spanish - test simple words", {
+test_that("Italian - test simple words", {
   expect_equal(object = italian_stemmer(c("arrivederci")),
                expected = c("arrivederc"))
 })
 
-test_that("Spanish - test simple words", {
+test_that("Portuguese - test simple words", {
   expect_equal(object = portuguese_stemmer(c("adeus")),
                expected = c("adeu"))
+})
+
+test_that("Finnish - test simple words", {
+  expect_equal(object = finnish_stemmer(c("taivas")),
+               expected = c("taiva"))
 })
 
 test_that("test empty word", {
   expect_equal(object = french_stemmer(words = c("")),
                expected = c(""))
+  expect_equal(object = french_stemmer(words = c("123")),
+               expected = c("123"))
   expect_equal(object = german_stemmer(words = c("")),
                expected = c(""))
   expect_equal(object = spanish_stemmer(words = c("")),
@@ -40,5 +47,7 @@ test_that("test empty word", {
   expect_equal(object = italian_stemmer(words = c("")),
                expected = c(""))
   expect_equal(object = portuguese_stemmer(words = c("")),
+               expected = c(""))
+  expect_equal(object = finnish_stemmer(words = c("")),
                expected = c(""))
 })

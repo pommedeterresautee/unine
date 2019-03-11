@@ -5,6 +5,17 @@
 
 using namespace Rcpp;
 
+// finnish_stemmer
+CharacterVector finnish_stemmer(Rcpp::StringVector words);
+RcppExport SEXP _unine_finnish_stemmer(SEXP wordsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::StringVector >::type words(wordsSEXP);
+    rcpp_result_gen = Rcpp::wrap(finnish_stemmer(words));
+    return rcpp_result_gen;
+END_RCPP
+}
 // french_stemmer
 CharacterVector french_stemmer(Rcpp::StringVector words);
 RcppExport SEXP _unine_french_stemmer(SEXP wordsSEXP) {
@@ -62,6 +73,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_unine_finnish_stemmer", (DL_FUNC) &_unine_finnish_stemmer, 1},
     {"_unine_french_stemmer", (DL_FUNC) &_unine_french_stemmer, 1},
     {"_unine_german_stemmer", (DL_FUNC) &_unine_german_stemmer, 1},
     {"_unine_italian_stemmer", (DL_FUNC) &_unine_italian_stemmer, 1},
