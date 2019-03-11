@@ -6,7 +6,7 @@ using namespace std;
 
 // online tests http://yomguithereal.github.io/talisman/stemmers/french
 
-u16string removeAllFEAccent (u16string word) {
+static u16string removeAllFEAccent (u16string& word) {
     int len = word.size() -1;
     int i;
 
@@ -48,7 +48,7 @@ u16string removeAllFEAccent (u16string word) {
     return(word);
 }
 
-u16string removeDoublet(u16string word) {
+static u16string removeDoublet(u16string& word) {
     int len = word.size() - 1;
     int i, position;
     wchar_t currentChar;
@@ -74,7 +74,7 @@ u16string removeDoublet(u16string word) {
 }
 
 
-u16string normfrenchword(u16string word) {
+u16string normfrenchword(u16string& word) {
     int len = word.size() - 1;
 
     if (len > 3) {
@@ -101,7 +101,7 @@ u16string normfrenchword(u16string word) {
     return(word);
 }
 
-u16string french_stemming_word(u16string word) {
+u16string french_stemming_word(u16string& word) {
     int len = word.size() - 1;
 
     if (len > 4) {
