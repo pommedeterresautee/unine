@@ -5,7 +5,7 @@ Version: 0.1.0
 Authors@R: c(person("Michaël", "Benesty", role = c("aut", "cre", "cph"), email = "michael@benesty.fr"),
   person("Jacques Savoy", role = c("cph"), email = "Jacques.Savoy@unine.ch"))
 Maintainer: Michaël Benesty <michael@benesty.fr>
-Description: Implementation of "light" stemmers for French, German, Italian, Spanish, Portuguese, Finnish, Swedish based on the work described.
+Description: Implementation of "light" stemmers for French, German, Italian, Spanish, Portuguese, Finnish, Swedish.
   A "light" stemmer (removing inflections only for noun and adjectives) presents some advantages. 
   The stemming procedure for French is described in (Savoy, 1999). 
   In Italian, the main inflectional rule is to modify the final character (e.g., «-o», «-a» or «-e») into another (e.g., «-i», «-e»). 

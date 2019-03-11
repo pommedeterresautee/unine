@@ -1,6 +1,6 @@
-# unine
+# UNINE
 
-Implementation of "light" stemmers for French, German, Italian, Spanish, Portuguese, Finnish, Swedish based on the work described.  
+Implementation of "light" stemmers for French, German, Italian, Spanish, Portuguese, Finnish, Swedish.  
 A "light" stemmer (removing inflections only for noun and adjectives) presents some advantages.  
 The stemming procedure for French is described in (Savoy, 1999).  
 In Italian, the main inflectional rule is to modify the final character (e.g., «-o», «-a» or «-e») into another (e.g., «-i», «-e»).  
@@ -18,9 +18,33 @@ install.packages("unine")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
-
 ``` r
-## basic example code
+french_stemmer(words = c("complète", "caissière"))
+# [1] "complet"  "caissier"
+
+french_stemmer(words = c("tester", "testament", "chevaux", "aromatique", "personnel", "folle"))
+# [1] "test"      "testament" "cheval"    "aromat"    "personnel" "fou" 
+
+# look at how "testament" and "tester" have been stemmed. Now with porter stemmer :
+SnowballC::wordStem(c("testament", "tester"), language = "french")
+# [1] "test" "test"
+
 ```
 
+References
+----------
+
+Please cite [1](#a-stemming procedure-and-stopword-list-for-general-french-corpora) if using this code.
+
+### A stemming procedure and stopword list for general French corpora
+
+[1] J. Savoy, [*A stemming procedure and stopword list for general French corpora*](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.87.7093&rep=rep1&type=pdf)
+
+```
+@article{savoy1999stemming,
+  title={A stemming procedure and stopword list for general French corpora},
+  author={Savoy, Jacques},
+  journal={Journal of the American Society for Information Science 50(10), 944-952.},
+  year={2009}
+}
+```
