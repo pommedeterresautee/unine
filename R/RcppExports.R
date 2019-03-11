@@ -27,6 +27,32 @@ german_stemmer <- function(words) {
     .Call(`_unine_german_stemmer`, words)
 }
 
+#' Stem Italian words
+#'
+#' Stemmer for Italian words
+#'
+#' @param words a [character] containing the original words.
+#' @return [character] with stemmed words.
+#' @examples
+#' italian_stemmer(c("arrivederci"))
+#' @export
+italian_stemmer <- function(words) {
+    .Call(`_unine_italian_stemmer`, words)
+}
+
+#' Stem Portuguese words
+#'
+#' Stemmer for Portuguese words
+#'
+#' @param words a [character] containing the original words.
+#' @return [character] with stemmed words.
+#' @examples
+#' portuguese_stemmer(c("adeus"))
+#' @export
+portuguese_stemmer <- function(words) {
+    .Call(`_unine_portuguese_stemmer`, words)
+}
+
 #' Stem Spanish words
 #'
 #' Stemmer for Spanish words

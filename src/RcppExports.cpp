@@ -27,6 +27,28 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// italian_stemmer
+CharacterVector italian_stemmer(Rcpp::StringVector words);
+RcppExport SEXP _unine_italian_stemmer(SEXP wordsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::StringVector >::type words(wordsSEXP);
+    rcpp_result_gen = Rcpp::wrap(italian_stemmer(words));
+    return rcpp_result_gen;
+END_RCPP
+}
+// portuguese_stemmer
+CharacterVector portuguese_stemmer(Rcpp::StringVector words);
+RcppExport SEXP _unine_portuguese_stemmer(SEXP wordsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::StringVector >::type words(wordsSEXP);
+    rcpp_result_gen = Rcpp::wrap(portuguese_stemmer(words));
+    return rcpp_result_gen;
+END_RCPP
+}
 // spanish_stemmer
 CharacterVector spanish_stemmer(Rcpp::StringVector words);
 RcppExport SEXP _unine_spanish_stemmer(SEXP wordsSEXP) {
@@ -42,6 +64,8 @@ END_RCPP
 static const R_CallMethodDef CallEntries[] = {
     {"_unine_french_stemmer", (DL_FUNC) &_unine_french_stemmer, 1},
     {"_unine_german_stemmer", (DL_FUNC) &_unine_german_stemmer, 1},
+    {"_unine_italian_stemmer", (DL_FUNC) &_unine_italian_stemmer, 1},
+    {"_unine_portuguese_stemmer", (DL_FUNC) &_unine_portuguese_stemmer, 1},
     {"_unine_spanish_stemmer", (DL_FUNC) &_unine_spanish_stemmer, 1},
     {NULL, NULL, 0}
 };

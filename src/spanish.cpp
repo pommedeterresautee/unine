@@ -67,7 +67,6 @@ u16string spanish_word_stemmer(u16string word) {
       return(word);
 }
 
-
 //' Stem Spanish words
 //'
 //' Stemmer for Spanish words

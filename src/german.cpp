@@ -114,8 +114,6 @@ u16string german_stemming (u16string word) {
   return(word);
 }
 
-
-
 //' Stem German words
 //'
 //' Stemmer for German words
