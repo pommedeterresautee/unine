@@ -14,3 +14,16 @@ french_stemmer <- function(words) {
     .Call(`_unine_french_stemmer`, words)
 }
 
+#' Stem German words
+#'
+#' Stemmer for German words
+#'
+#' @param words a [character] containing the original words.
+#' @return [character] with stemmed words.
+#' @examples
+#' german_stemmer(c("kinder"))
+#' @export
+german_stemmer <- function(words) {
+    .Call(`_unine_german_stemmer`, words)
+}
+

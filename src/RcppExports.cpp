@@ -16,9 +16,21 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// german_stemmer
+CharacterVector german_stemmer(Rcpp::StringVector words);
+RcppExport SEXP _unine_german_stemmer(SEXP wordsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::StringVector >::type words(wordsSEXP);
+    rcpp_result_gen = Rcpp::wrap(german_stemmer(words));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_unine_french_stemmer", (DL_FUNC) &_unine_french_stemmer, 1},
+    {"_unine_german_stemmer", (DL_FUNC) &_unine_german_stemmer, 1},
     {NULL, NULL, 0}
 };
 

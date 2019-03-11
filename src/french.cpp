@@ -51,7 +51,7 @@ u16string removeAllFEAccent (u16string word) {
 u16string removeDoublet(u16string word) {
     int len = word.size() - 1;
     int i, position;
-    char currentChar;
+    wchar_t currentChar;
 
     if (len > 3) {
       currentChar = word[0];
