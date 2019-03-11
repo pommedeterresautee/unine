@@ -1,3 +1,5 @@
+// [[Rcpp::plugins(cpp11)]]
+
 #include <Rcpp.h>
 #include <stdio.h>
 #include <codecvt>
