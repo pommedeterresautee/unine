@@ -1,14 +1,14 @@
 Package: unine
 Type: Package
-Title: Unine Light Stemmer for 7 Languages
+Title: Unine Light Stemmer
 Version: 0.1.0
 Authors@R: c(person("Michaël", "Benesty", role = c("aut", "cre", "cph"), email = "michael@benesty.fr"),
   person("Jacques Savoy", role = c("cph"), email = "Jacques.Savoy@unine.ch"))
 Maintainer: Michaël Benesty <michael@benesty.fr>
 Description: Implementation of "light" stemmers for French, German, Italian, Spanish, Portuguese, Finnish, Swedish. 
   They are based on the same work as the "light" stemmers found in SolR or ElasticSearch. 
-  A "light" stemmer consist in removing inflections only for noun and adjectives. 
-  Indexing verbs for Italian, French or German is not of primary importance compared to nouns and adjectives. 
+  A "light" stemmer consists in removing inflections only for noun and adjectives. 
+  Indexing verbs for these languages is not of primary importance compared to nouns and adjectives. 
   The stemming procedure for French is described in (Savoy, 1999). 
 URL: https://github.com/pommedeterresautee/unine, http://members.unine.ch/jacques.savoy/clef/
 BugReports: https://github.com/pommedeterresautee/unine/issues
@@ -25,4 +25,5 @@ Roxygen: list(markdown = TRUE, roclets = c("rd", "collate", "namespace_roclet"))
 RoxygenNote: 6.1.1
 NeedsCompilation: yes
 Suggests: 
-    testthat
+    testthat,
+    covr
