@@ -2,14 +2,14 @@
 
 #include <Rcpp.h>
 #include <stdio.h>
-#include <codecvt>
+#include "convert.h"
 using namespace Rcpp;
 using namespace std;
 
 /*  Italian stemmer tring to remove inflectional suffixes */
 
 
-static void removeItalianAccent(u16string& word) {
+static void removeItalianAccent(wstring& word) {
   int len = word.size() - 1;
   int i;
 
@@ -32,7 +32,7 @@ static void removeItalianAccent(u16string& word) {
   }
 }
 
-static u16string italian_stemming(u16string word) {
+static wstring italian_stemming(wstring word) {
   int len = word.size() - 1;
 
   if (len > 4) {
@@ -85,13 +85,13 @@ return(word);
 //' @export
 // [[Rcpp::export]]
 CharacterVector italian_stemmer(Rcpp::StringVector words) {
-  std::wstring_convert<std::codecvt_utf8_utf16<char16_t>, char16_t> convert;
   CharacterVector result(words.size());
 
   for (int i = 0; i < words.size(); ++i) {
-    u16string str2 = convert.from_bytes(words[i]);
-    str2 = italian_stemming(str2);
-    result[i] = convert.to_bytes(str2);
+    string s1 = static_cast<string>(words[i]);
+    wstring str2 = utf8_to_utf16(s1);
+    result[i] = italian_stemming(str2);
+    Rcpp::checkUserInterrupt();
   }
 
   return result;

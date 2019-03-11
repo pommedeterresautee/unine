@@ -2,13 +2,13 @@
 
 #include <Rcpp.h>
 #include <stdio.h>
-#include <codecvt>
+#include "convert.h"
 using namespace Rcpp;
 using namespace std;
 
 // online tests http://yomguithereal.github.io/talisman/stemmers/french
 
-static void removeAllFEAccent (u16string& word) {
+static void removeAllFEAccent (wstring& word) {
     int len = word.size() -1;
     int i;
 
@@ -49,7 +49,7 @@ static void removeAllFEAccent (u16string& word) {
     }
 }
 
-static void removeDoublet(u16string& word) {
+static void removeDoublet(wstring& word) {
     int len = word.size() - 1;
     int i, position;
     wchar_t currentChar;
@@ -74,7 +74,7 @@ static void removeDoublet(u16string& word) {
 }
 
 
-u16string normfrenchword(u16string& word) {
+wstring normfrenchword(wstring& word) {
     int len = word.size() - 1;
 
     if (len > 3) {
@@ -101,7 +101,7 @@ u16string normfrenchword(u16string& word) {
     return(word);
 }
 
-u16string french_stemming_word(u16string& word) {
+wstring french_stemming_word(wstring& word) {
     int len = word.size() - 1;
 
     if (len > 4) {
@@ -392,13 +392,13 @@ u16string french_stemming_word(u16string& word) {
 //' @export
 // [[Rcpp::export]]
 CharacterVector french_stemmer(Rcpp::StringVector words) {
-  std::wstring_convert<std::codecvt_utf8_utf16<char16_t>, char16_t> convert;
   CharacterVector result(words.size());
 
   for (int i = 0; i < words.size(); ++i) {
-    u16string str2 = convert.from_bytes(words[i]);
-    str2 = french_stemming_word(str2);
-    result[i] = convert.to_bytes(str2);
+    string s1 = static_cast<string>(words[i]);
+    wstring str2 = utf8_to_utf16(s1);
+    result[i] = french_stemming_word(str2);
+    Rcpp::checkUserInterrupt();
   }
 
   return result;

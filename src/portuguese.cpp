@@ -2,13 +2,13 @@
 
 #include <Rcpp.h>
 #include <stdio.h>
-#include <codecvt>
+#include "convert.h"
 using namespace Rcpp;
 using namespace std;
 
 /*  Portuguese stemmer tring to remove inflectional suffixes for nouns and adjectives */
 
-static u16string removeAllPTAccent(u16string& word) {
+static wstring removeAllPTAccent(wstring& word) {
   int len = word.size() - 1;
   int i;
 
@@ -86,7 +86,7 @@ static u16string removeAllPTAccent(u16string& word) {
   return(word);
 }
 
-static u16string finalVowelPortuguese(u16string& word) {
+static wstring finalVowelPortuguese(wstring& word) {
   int len = word.size() - 1;
 
   if (len > 3) {
@@ -101,7 +101,7 @@ return(word);
 
 /* Remove plural and feminine form of Portuguese words */
 
-static u16string remove_PTsuffix (u16string& word) {
+static wstring remove_PTsuffix (wstring& word) {
   int len = word.size() - 1;
 
   if (len > 3) {   /* plural in -es when sing form ends with -r, -s, -l or -z*/
@@ -188,7 +188,7 @@ return(word);
 }
 
 
-static u16string normFemininPortuguese(u16string& word) {
+static wstring normFemininPortuguese(wstring& word) {
   int len = word.size() - 1;
 
   if ((len < 3) || (word[len]!= u'a')) {
@@ -271,7 +271,7 @@ static u16string normFemininPortuguese(u16string& word) {
       return(word);
 }
 
-u16string portuguese_stemming (u16string& word) {
+wstring portuguese_stemming (wstring& word) {
   int len = word.size() - 1;
 
   if (len > 2) {
@@ -294,13 +294,13 @@ u16string portuguese_stemming (u16string& word) {
 //' @export
 // [[Rcpp::export]]
 CharacterVector portuguese_stemmer(Rcpp::StringVector words) {
-  std::wstring_convert<std::codecvt_utf8_utf16<char16_t>, char16_t> convert;
   CharacterVector result(words.size());
 
   for (int i = 0; i < words.size(); ++i) {
-    u16string str2 = convert.from_bytes(words[i]);
-    str2 = portuguese_stemming(str2);
-    result[i] = convert.to_bytes(str2);
+    string s1 = static_cast<string>(words[i]);
+    wstring str2 = utf8_to_utf16(s1);
+    result[i] = portuguese_stemming(str2);
+    Rcpp::checkUserInterrupt();
   }
 
   return result;

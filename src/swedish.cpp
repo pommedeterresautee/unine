@@ -2,13 +2,14 @@
 
 #include <Rcpp.h>
 #include <stdio.h>
-#include <codecvt>
+#include "convert.h"
+
 using namespace Rcpp;
 using namespace std;
 
 /*  Swedish stemmer tring to remove inflectional suffixes */
 
-u16string swedish_stemming(u16string& word) {
+wstring swedish_stemming(wstring& word) {
   int len = word.size() - 1;
 
     if (len > 3) {   /*  -s  genitive form */
@@ -142,13 +143,14 @@ if (len > 3) {
 //' @export
 // [[Rcpp::export]]
 CharacterVector swedish_stemmer(Rcpp::StringVector words) {
-  std::wstring_convert<std::codecvt_utf8_utf16<char16_t>, char16_t> convert;
+
   CharacterVector result(words.size());
 
   for (int i = 0; i < words.size(); ++i) {
-    u16string str2 = convert.from_bytes(words[i]);
-    str2 = swedish_stemming(str2);
-    result[i] = convert.to_bytes(str2);
+    string s1 = static_cast<string>(words[i]);
+    wstring str2 = utf8_to_utf16(s1);
+    result[i] = swedish_stemming(str2);
+    Rcpp::checkUserInterrupt();
   }
 
   return result;

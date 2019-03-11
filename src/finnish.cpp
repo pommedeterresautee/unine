@@ -2,7 +2,7 @@
 
 #include <Rcpp.h>
 #include <stdio.h>
-#include <codecvt>
+#include "convert.h"
 using namespace Rcpp;
 using namespace std;
 
@@ -16,7 +16,7 @@ bool IsVowel(const wchar_t& c) {
 }
 
 
-static void removeFinnishAccent(u16string& word) {
+static void removeFinnishAccent(wstring& word) {
   int len = word.size() - 1;
   int i;
 
@@ -34,7 +34,7 @@ static void removeFinnishAccent(u16string& word) {
 }
 
 
-static u16string norm_finnish(u16string& word) {
+static wstring norm_finnish(wstring& word) {
   int len = word.size() - 1;
 
   if (len > 4) {   /* -hde  -> -ksi  */
@@ -69,7 +69,7 @@ else {
   return(word);
 }
 
-static void removeDoubleKPT(u16string& word) {
+static void removeDoubleKPT(wstring& word) {
   int len = word.size() - 1;
   int i, position;
   char currentChar;
@@ -94,7 +94,7 @@ static void removeDoubleKPT(u16string& word) {
   } /* end if len */
 }
 
-static u16string norm2_finnish (u16string& word) {
+static wstring norm2_finnish (wstring& word) {
   int len = word.size() - 1;
 
   if (len > 7) {   /* -e, -o,  -u */
@@ -112,7 +112,7 @@ static u16string norm2_finnish (u16string& word) {
   return(word);
 }
 
-static u16string finnishStep1 (u16string&  word) {
+static wstring finnishStep1 (wstring&  word) {
   int len = word.size() - 1;
 
   if (len > 7) {
@@ -147,7 +147,7 @@ static u16string finnishStep1 (u16string&  word) {
 }
 
 
-static u16string finnishStep2(u16string& word) {
+static wstring finnishStep2(wstring& word) {
   int len = word.size() - 1;
 
   if (len > 4) {
@@ -181,7 +181,7 @@ static u16string finnishStep2(u16string& word) {
 }
 
 
-static u16string finnishStep3 (u16string& word) {
+static wstring finnishStep3 (wstring& word) {
   int len = word.size() - 1;
 
   if (len > 7) {
@@ -341,7 +341,7 @@ static u16string finnishStep3 (u16string& word) {
         return(word);
 }
 
-u16string finnish_stemming(u16string& word) {
+wstring finnish_stemming(wstring& word) {
   int len = word.size() - 1;
 
   if (len > 2) {
@@ -366,13 +366,13 @@ u16string finnish_stemming(u16string& word) {
 //' @export
 // [[Rcpp::export]]
 CharacterVector finnish_stemmer(Rcpp::StringVector words) {
-  std::wstring_convert<std::codecvt_utf8_utf16<char16_t>, char16_t> convert;
   CharacterVector result(words.size());
 
   for (int i = 0; i < words.size(); ++i) {
-    u16string str2 = convert.from_bytes(words[i]);
-    str2 = finnish_stemming(str2);
-    result[i] = convert.to_bytes(str2);
+    string s1 = static_cast<string>(words[i]);
+    wstring str2 = utf8_to_utf16(s1);
+    result[i] = finnish_stemming(str2);
+    Rcpp::checkUserInterrupt();
   }
 
   return result;

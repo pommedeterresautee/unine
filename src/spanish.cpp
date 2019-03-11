@@ -2,13 +2,13 @@
 
 #include <Rcpp.h>
 #include <stdio.h>
-#include <codecvt>
+#include "convert.h"
 using namespace Rcpp;
 using namespace std;
 
 /*  Spanish stemmer tring to remove inflectional suffixes */
 
-u16string removeSpanishAccent (u16string& word) {
+wstring removeSpanishAccent (wstring& word) {
   int len = word.size() - 1;
   int i;
 
@@ -32,7 +32,7 @@ u16string removeSpanishAccent (u16string& word) {
   return(word);
 }
 
-u16string spanish_word_stemmer(u16string word) {
+wstring spanish_word_stemmer(wstring word) {
   int len = word.size() - 1;
 
   if (len > 3) {
@@ -80,14 +80,13 @@ u16string spanish_word_stemmer(u16string word) {
 //' @export
 // [[Rcpp::export]]
 CharacterVector spanish_stemmer(Rcpp::StringVector words) {
-  std::wstring_convert<std::codecvt_utf8_utf16<char16_t>, char16_t> convert;
   CharacterVector result(words.size());
 
   for (int i = 0; i < words.size(); ++i) {
-    u16string str2 = convert.from_bytes(words[i]);
-    str2 = spanish_word_stemmer(str2);
-    result[i] = convert.to_bytes(str2);
+    string s1 = static_cast<string>(words[i]);
+    wstring str2 = utf8_to_utf16(s1);
+    result[i] = spanish_word_stemmer(str2);
+    Rcpp::checkUserInterrupt();
   }
-
   return result;
 }

@@ -2,14 +2,14 @@
 
 #include <Rcpp.h>
 #include <stdio.h>
-#include <codecvt>
+#include "convert.h"
 using namespace Rcpp;
 using namespace std;
 
 
 /*  German stemmer tring to remove inflectional suffixes */
 
-static u16string removeGermanAccent(u16string& word) {
+static wstring removeGermanAccent(wstring& word) {
   int len = word.size() - 1;
   int i;
 
@@ -41,7 +41,7 @@ static int STEnding (wchar_t aLetter) {
 }
 
 
-u16string remove_Step1 (u16string& word) {
+wstring remove_Step1 (wstring& word) {
   int len = word.size() - 1;
 
   if (len > 4) {
@@ -81,7 +81,7 @@ return(word);
   return(word);
 }
 
-u16string remove_Step2 (u16string& word) {
+wstring remove_Step2 (wstring& word) {
   int len = word.size() - 1;
 
   if (len > 4) {
@@ -109,7 +109,7 @@ return(word);
 
 
 
-u16string german_stemming (u16string word) {
+wstring german_stemming (wstring word) {
   removeGermanAccent(word);
   remove_Step1(word);
   remove_Step2(word);
@@ -127,15 +127,16 @@ u16string german_stemming (u16string word) {
 //' @export
 // [[Rcpp::export]]
 CharacterVector german_stemmer(Rcpp::StringVector words) {
-  std::wstring_convert<std::codecvt_utf8_utf16<char16_t>, char16_t> convert;
   CharacterVector result(words.size());
 
   for (int i = 0; i < words.size(); ++i) {
-    u16string str2 = convert.from_bytes(words[i]);
+    string s1 = static_cast<string>(words[i]);
+    wstring str2 = utf8_to_utf16(s1);
     str2 = removeGermanAccent(str2);
     str2 = remove_Step1(str2);
-    str2 = remove_Step2(str2);
-    result[i] = convert.to_bytes(str2);
+    result[i] = remove_Step2(str2);
+
+    Rcpp::checkUserInterrupt();
   }
 
   return result;
