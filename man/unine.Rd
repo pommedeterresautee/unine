@@ -4,12 +4,12 @@
 \name{unine}
 \alias{unine}
 \alias{unine-package}
-\title{unine: Unine Light Stemmer for 7 Languages}
+\title{unine: Unine Light Stemmer}
 \description{
 Implementation of "light" stemmers for French, German, Italian, Spanish, Portuguese, Finnish, Swedish. 
   They are based on the same work as the "light" stemmers found in SolR or ElasticSearch. 
-  A "light" stemmer consist in removing inflections only for noun and adjectives. 
-  Indexing verbs for Italian, French or German is not of primary importance compared to nouns and adjectives. 
+  A "light" stemmer consists in removing inflections only for noun and adjectives. 
+  Indexing verbs for these languages is not of primary importance compared to nouns and adjectives. 
   The stemming procedure for French is described in (Savoy, 1999).
 }
 \seealso{
