@@ -6,6 +6,7 @@ Authors@R: c(person("Michaël", "Benesty", role = c("aut", "cre", "cph"), email 
   person("Jacques Savoy", role = c("cph"), email = "Jacques.Savoy@unine.ch"))
 Maintainer: Michaël Benesty <michael@benesty.fr>
 Description: Implementation of "light" stemmers for French, German, Italian, Spanish, Portuguese, Finnish, Swedish.
+  They are based on the same work as the "light" stemmers found in SolR or ElasticSearch.
   A "light" stemmer (removing inflections only for noun and adjectives) presents some advantages. 
   The stemming procedure for French is described in (Savoy, 1999). 
   In Italian, the main inflectional rule is to modify the final character (e.g., «-o», «-a» or «-e») into another (e.g., «-i», «-e»). 
@@ -20,7 +21,10 @@ LazyData: true
 LinkingTo: 
     Rcpp
 Imports: 
-    Rcpp
+    Rcpp (>= 1.0.0),
+    methods
+SystemRequirements: C++11
+Roxygen: list(markdown = TRUE, roclets = c("rd", "collate", "namespace_roclet"))
 RoxygenNote: 6.1.1
 NeedsCompilation: yes
 Suggests: 
