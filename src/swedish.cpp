@@ -8,7 +8,6 @@ using namespace std;
 
 /*  Swedish stemmer tring to remove inflectional suffixes */
 
-
 u16string swedish_stemming(u16string& word) {
   int len = word.size() - 1;
 

@@ -21,8 +21,9 @@ LazyData: true
 LinkingTo: 
     Rcpp
 Imports: 
-    Rcpp,
+    Rcpp (>= 1.0.0),
     methods
+SystemRequirements: C++11
 Roxygen: list(markdown = TRUE, roclets = c("rd", "collate", "namespace_roclet"))
 RoxygenNote: 6.1.1
 NeedsCompilation: yes
