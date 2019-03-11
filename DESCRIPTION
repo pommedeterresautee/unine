@@ -1,0 +1,18 @@
+Package: unine
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.1.0
+Authors@R: c(person("Michaël", "Benesty", role = c("aut", "cre", "cph"), email = "michael@benesty.fr"),
+  person("Jacques Savoy", role = c("cph"), email = "Jacques.Savoy@unine.ch"))
+Maintainer: Michaël Benesty <michael@benesty.fr>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+LinkingTo: 
+    Rcpp
+Imports: 
+    Rcpp
+RoxygenNote: 6.1.1
+NeedsCompilation: yes
