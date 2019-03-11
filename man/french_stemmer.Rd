@@ -7,10 +7,10 @@
 french_stemmer(words)
 }
 \arguments{
-\item{words}{a [character] containing the original words.}
+\item{words}{a \link{character} containing the original words.}
 }
 \value{
-[character] with stemmed words.
+\link{character} with stemmed words.
 }
 \description{
 Stemmer for French words

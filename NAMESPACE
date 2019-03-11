@@ -2,6 +2,7 @@
 
 export(french_stemmer)
 export(german_stemmer)
+export(spanish_stemmer)
 import(methods)
 importFrom(Rcpp,sourceCpp)
 useDynLib(unine, .registration = TRUE)
