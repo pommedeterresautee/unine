@@ -75,7 +75,7 @@ u16string spanish_word_stemmer(u16string word) {
 //' @param words a [character] containing the original words.
 //' @return [character] with stemmed words.
 //' @examples
-//' spannish_stemmer(c("perros"))
+//' spanish_stemmer(c("perros"))
 //' @export
 // [[Rcpp::export]]
 CharacterVector spanish_stemmer(Rcpp::StringVector words) {

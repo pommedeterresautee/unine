@@ -34,7 +34,7 @@ german_stemmer <- function(words) {
 #' @param words a [character] containing the original words.
 #' @return [character] with stemmed words.
 #' @examples
-#' spannish_stemmer(c("perros"))
+#' spanish_stemmer(c("perros"))
 #' @export
 spanish_stemmer <- function(words) {
     .Call(`_unine_spanish_stemmer`, words)

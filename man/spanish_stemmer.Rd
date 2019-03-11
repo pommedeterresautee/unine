@@ -16,5 +16,5 @@ spanish_stemmer(words)
 Stemmer for Spanish words
 }
 \examples{
-spannish_stemmer(c("perros"))
+spanish_stemmer(c("perros"))
 }
