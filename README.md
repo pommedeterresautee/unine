@@ -1,4 +1,4 @@
-![UNINE](https://github.com/pommedeterresautee/unine/raw/master/tools/logo.png) 
+![UNINE](https://github.com/pommedeterresautee/unine/raw/master/tools/logo_unine.png) 
 =========
 
 [![Travis build status](https://travis-ci.org/pommedeterresautee/unine.svg?branch=master)](https://travis-ci.org/pommedeterresautee/unine)
