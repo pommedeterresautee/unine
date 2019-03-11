@@ -1,6 +1,7 @@
 # UNINE
 
 [![Travis build status](https://travis-ci.org/pommedeterresautee/unine.svg?branch=master)](https://travis-ci.org/pommedeterresautee/unine)
+[![Build status](https://ci.appveyor.com/api/projects/status/gole8beawqyw3tvy?svg=true)](https://ci.appveyor.com/project/pommedeterresautee/unine)
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 
 Implementation of "light" stemmers for French, German, Italian, Spanish, Portuguese, Finnish, Swedish.  
