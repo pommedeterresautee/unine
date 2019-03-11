@@ -1,6 +1,7 @@
 # UNINE
 
 Implementation of "light" stemmers for French, German, Italian, Spanish, Portuguese, Finnish, Swedish.  
+They are based on the same work as the "light" stemmers found in [SolR](https://github.com/apache/lucene-solr/blob/master/lucene/analysis/common/src/java/org/apache/lucene/analysis/fr/FrenchLightStemmer.java) or [ElasticSearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-stemmer-tokenfilter.html).  
 A "light" stemmer (removing inflections only for noun and adjectives) presents some advantages.  
 The stemming procedure for French is described in (Savoy, 1999).  
 In Italian, the main inflectional rule is to modify the final character (e.g., «-o», «-a» or «-e») into another (e.g., «-i», «-e»).  

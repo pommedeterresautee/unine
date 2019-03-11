@@ -7,6 +7,7 @@
 \title{unine: What the Package Does (Title Case)}
 \description{
 Implementation of "light" stemmers for French, German, Italian, Spanish, Portuguese, Finnish, Swedish.
+  They are based on the same work as the "light" stemmers found in SolR or ElasticSearch.
   A "light" stemmer (removing inflections only for noun and adjectives) presents some advantages. 
   The stemming procedure for French is described in (Savoy, 1999). 
   In Italian, the main inflectional rule is to modify the final character (e.g., «-o», «-a» or «-e») into another (e.g., «-i», «-e»). 
