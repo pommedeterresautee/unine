@@ -6,8 +6,6 @@
 using namespace Rcpp;
 using namespace std;
 
-// online tests http://yomguithereal.github.io/talisman/stemmers/french
-
 static void removeAllFEAccent (wstring& word) {
     int len = word.size() -1;
     int i;
