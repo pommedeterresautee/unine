@@ -79,3 +79,16 @@ spanish_stemmer <- function(words) {
     .Call(`_unine_spanish_stemmer`, words)
 }
 
+#' Stem Swedish words
+#'
+#' Stemmer for Swedish words
+#'
+#' @param words a [character] containing the original words.
+#' @return [character] with stemmed words.
+#' @examples
+#' swedish_stemmer(c("stiga"))
+#' @export
+swedish_stemmer <- function(words) {
+    .Call(`_unine_swedish_stemmer`, words)
+}
+
