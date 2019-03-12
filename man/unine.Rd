@@ -16,6 +16,7 @@ Implementation of "light" stemmers for French, German, Italian, Spanish, Portugu
 Useful links:
 \itemize{
   \item \url{https://github.com/pommedeterresautee/unine}
+  \item \url{https://pommedeterresautee.github.io/unine/}
   \item \url{http://members.unine.ch/jacques.savoy/clef/}
   \item Report bugs at \url{https://github.com/pommedeterresautee/unine/issues}
 }
