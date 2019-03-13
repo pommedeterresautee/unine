@@ -26,4 +26,5 @@ RoxygenNote: 6.1.1
 NeedsCompilation: yes
 Suggests: 
     testthat,
-    covr
+    covr,
+    stringi
