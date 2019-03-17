@@ -4,6 +4,7 @@
 [![Travis build status](https://travis-ci.org/pommedeterresautee/unine.svg?branch=master)](https://travis-ci.org/pommedeterresautee/unine)
 [![Build status](https://ci.appveyor.com/api/projects/status/gole8beawqyw3tvy?svg=true)](https://ci.appveyor.com/project/pommedeterresautee/unine)
 [![Coverage status](https://codecov.io/gh/pommedeterresautee/unine/branch/master/graph/badge.svg)](https://codecov.io/github/pommedeterresautee/unine?branch=master)
+[![CRAN status](https://www.r-pkg.org/badges/version/unine)](https://cran.r-project.org/package=unine)
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
