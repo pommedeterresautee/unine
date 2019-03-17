@@ -10,7 +10,7 @@ Description: Implementation of "light" stemmers for French, German, Italian, Spa
   A "light" stemmer consists in removing inflections only for noun and adjectives. 
   Indexing verbs for these languages is not of primary importance compared to nouns and adjectives. 
   The stemming procedure for French is described in (Savoy, 1999). 
-URL: https://github.com/pommedeterresautee/unine, http://members.unine.ch/jacques.savoy/clef/
+URL: https://github.com/pommedeterresautee/unine, https://pommedeterresautee.github.io/unine/, http://members.unine.ch/jacques.savoy/clef/
 BugReports: https://github.com/pommedeterresautee/unine/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -26,4 +26,5 @@ RoxygenNote: 6.1.1
 NeedsCompilation: yes
 Suggests: 
     testthat,
-    covr
+    covr,
+    stringi
