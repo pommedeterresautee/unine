@@ -5,8 +5,10 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/gole8beawqyw3tvy?svg=true)](https://ci.appveyor.com/project/pommedeterresautee/unine)
 [![Coverage status](https://codecov.io/gh/pommedeterresautee/unine/branch/master/graph/badge.svg)](https://codecov.io/github/pommedeterresautee/unine?branch=master)
 [![CRAN status](https://www.r-pkg.org/badges/version/unine)](https://cran.r-project.org/package=unine)
+[![CRAN_Download](http://cranlogs.r-pkg.org/badges/unine)](http://cran.rstudio.com/web/packages/unine/index.html) 
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Follow](https://img.shields.io/twitter/follow/pommedeterre33.svg?style=social)](https://twitter.com/intent/follow?screen_name=pommedeterre33)
 
 Implementation of "light" stemmers for **French, German, Italian, Spanish, Portuguese, Finnish, Swedish**.  
 They are based on the same work as the "light" stemmers found in [SolR](https://github.com/apache/lucene-solr/blob/master/lucene/analysis/common/src/java/org/apache/lucene/analysis/fr/FrenchLightStemmer.java) or [ElasticSearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-stemmer-tokenfilter.html).  
