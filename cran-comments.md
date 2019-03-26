@@ -1,3 +1,6 @@
+# version 0.1.0 - 26/03/19
+reencode DOI containing forbidden character
+
 # version 0.1.0 - 24/03/19
 Message from Cran:
 Thanks, please add a DOI, arXiv or ISBN to your reference (Savoy, 1999) -> DONE
