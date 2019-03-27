@@ -39,30 +39,30 @@ wstring spanish_word_stemmer(wstring word) {
     removeSpanishAccent(word);
     if ((word[len]==u's') && (word[len-1]==u'e') && (word[len-2]==u's') && (word[len-3]==u'e')) {
       /*  corteses -> cortés  */
-      word[len-1]='\0';
+      word.erase(len-1);
       return(word);
     }
     if ((word[len]==u's') && (word[len-1]==u'e') && (word[len-2]==u'c')) {
       word[len-2]='z';        /*  dos veces -> una vez  */
-      word[len-1]='\0';
+      word.erase(len-1);
       return(word);
     }
     if (word[len]==u's') {  /*  ending with -os, -as  or -es */
       if (word[len-1]==u'o' || word[len-1]==u'a' || word[len-1]==u'e' ) {
-        word[len-1]='\0';  /*  remove -os, -as  or -es */
+        word.erase(len-1);  /*  remove -os, -as  or -es */
       return (word);
       }
     }
     if (word[len]==u'o') {   /*  ending with  -o  */
-      word[len]='\0';
+      word.erase(len);
       return(word);
     }
     if (word[len]==u'a') {   /*  ending with  -a  */
-      word[len]='\0';
+      word.erase(len);
       return(word);
     }
     if (word[len]==u'e') {   /*  ending with  -e  */
-      word[len]='\0';
+      word.erase(len);
       return(word);
     }
   } /* end if (len > 3) */

@@ -39,34 +39,34 @@ static wstring italian_stemming(wstring word) {
     removeItalianAccent(word);
     if (word[len]==u'e') {  /*  ending with -ie or -he  */
 if (word[len-1]==u'i' || word[len-1]==u'h') {
-  word[len-1]=u'\0';
+  word.erase(len-1);
   return (word);
 }
-word[len]=u'\0';  /*  ending with -e  */
+word.erase(len);  /*  ending with -e  */
 return(word);
     }
     if (word[len]==u'i') {  /*  ending with -hi or -ii */
 if ((word[len-1]==u'h') || (word[len-1]==u'i')) {
-  word[len-1]=u'\0';
+  word.erase(len-1);
   return (word);
 }
-word[len]=u'\0';  /*  ending with -i  */
+word.erase(len);  /*  ending with -i  */
 return(word);
     }
     if (word[len]==u'a') {  /*  ending with -ia  */
 if (word[len-1]==u'i') {
-  word[len-1]=u'\0';
+  word.erase(len-1);
   return (word);
 }
-word[len]=u'\0';  /*  ending with -a  */
+word.erase(len);  /*  ending with -a  */
 return(word);
     }
     if (word[len]==u'o') {  /*  ending with -io  */
 if (word[len-1]==u'i') {
-  word[len-1]=u'\0';
+  word.erase(len-1);
   return (word);
 }
-word[len]=u'\0';  /*  ending with -o  */
+word.erase(len);  /*  ending with -o  */
 return(word);
     }
 
