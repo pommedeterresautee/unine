@@ -25,7 +25,7 @@ Online tests are available [on this website](http://yomguithereal.github.io/tali
 
 ### Installation
 
-You can install the released version of unine from [CRAN](https://CRAN.R-project.org) with: (**NOT YET PUBLISHED**)
+You can install the released version of unine from [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
 install.packages("unine")
