@@ -8,9 +8,9 @@ split_words <- function(text) {
 
 test_that("French", {
   expect_equal(object = french_stemmer(words = c("tester", "testament", "chevaux", "aromatique", "personnel", "folle", "acheteuse")),
-               expected = c("test", "testament", "cheval", "aromat", "personel", "fou", "acheter"))
-  expect_equal(object = french_stemmer(words = c("complète", "caisière")),
-               expected = c("complet", "caisier"))
+               expected = c("test", "testament", "cheval", "aromat", "personel", "fou", "achet"))
+  expect_equal(object = french_stemmer(words = c("complète", "caisière", "homicides")),
+               expected = c("complet", "caisier", "homicid"))
   text <- "La deuxième situation décrite a une portée plus large: lorsque le juge est compétent au titre de la convention, il devra statuer par défaut"
   words <- split_words(text = text)
   expect_equal(object = french_stemmer(words),

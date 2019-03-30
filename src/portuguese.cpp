@@ -91,7 +91,7 @@ static wstring finalVowelPortuguese(wstring& word) {
 
   if (len > 3) {
     if ((word[len]== u'e') || (word[len]== u'a') || (word[len]== u'o')) {
-      word[len]= u'\0';  /* remove final -e or -a or -o */
+      word.erase(len);  /* remove final -e or -a or -o */
 return(word);
     }
   }
@@ -108,7 +108,7 @@ static wstring remove_PTsuffix (wstring& word) {
 if ((word[len]== u's') && (word[len-1]== u'e') &&
     ((word[len-2]== u'r') || (word[len-2]== u's') ||
     (word[len-2]== u'z') || (word[len-2]== u'l'))) {
-  word[len-1]= u'\0';  /* doutores (plur) --> doutor (sing) */
+  word.erase(len-1);  /* doutores (plur) --> doutor (sing) */
 return(word);
 }
   }  /* len > 3 */
@@ -116,7 +116,7 @@ return(word);
 if (len > 2) {   /* when sing form ends with -em, change -m in -n in plur */
 if ((word[len]== u's') && (word[len-1]== u'n')) {
   word[len-1]= u'm';     /* homens (plur) --> homem (sing) */
-word[len]= u'\0';
+word.erase(len);
 return(word);
 }
 } /* len > 2 */
@@ -126,7 +126,7 @@ if (((word[len]== u's') && (word[len-1]== u'i')) &&
     ((word[len-2]== u'e') || (word[len-2]== u'é'))) {
   word[len-2]= u'e';     /* papéis (plur) --> papel (sing) */
 word[len-1]= u'l';     /* error:  faceis (plur) --> facil (sing) */
-word[len]= u'\0';
+word.erase(len);
 return(word);
 }
 } /* len > 3 */
@@ -134,7 +134,7 @@ return(word);
 if (len > 3) {   /* when sing form ends with -ais, change -ais in -al in plur */
 if ((word[len]== u's') && (word[len-1]== u'i') && (word[len-2]== u'a')) {
   word[len-1]= u'l';     /* normais (plur) --> normal (sing) */
-word[len]= u'\0';
+word.erase(len);
 return(word);
 }
 } /* len > 3 */
@@ -143,7 +143,7 @@ if (len > 3) {   /* when sing form ends with -'ois, change -ais in -al in plur *
 if ((word[len]== u's') && (word[len-1]== u'i') && (word[len-2]== u'ó')) {
   word[len-2]= u'o';     /* lencois (plur) --> lencol (sing) */
 word[len-1]= u'l';
-word[len]= u'\0';
+word.erase(len);
 return(word);
 }
 } /* len > 3 */
@@ -159,12 +159,12 @@ if (len > 2) {   /* when plur form ends with -ões, change -ões in -ão  */
 if ((word[len]== u's') && (word[len-1]== u'e') && (word[len-2]== u'õ')) {
   word[len-2]= u'ã';     /* botões (plur) --> botão (sing) */
 word[len-1]= u'o';
-word[len]= u'\0';
+word.erase(len);
 return(word);
 }         /* when plur form ends with -ães, change -ães in -ão  */
 if ((word[len]== u's') && (word[len-1]== u'e') && (word[len-2]== u'ã')) {
   word[len-1]= u'o';     /* caes (plur) --> cao (sing) */
-word[len]= u'\0';
+word.erase(len);
 return(word);
 }
 } /* len > 2 */
@@ -172,14 +172,14 @@ return(word);
 if (len > 5) {   /* for adverb -mente */
 if ((word[len]== u'e') && (word[len-1]== u't') && (word[len-2]== u'n') &&
     (word[len-3]== u'e') && (word[len-4]== u'm')) {
-  word[len-4]= u'\0';
+  word.erase(len-4);
   return(word);
 }
 } /* len > 5 */
 
 if (len > 2) {   /* usually plural in -s */
 if (word[len]== u's') {
-  word[len]= u'\0';   /* of course, invariable word, pires->pires */
+  word.erase(len);   /* of course, invariable word, pires->pires */
 len--;
 }
 } /* len > 2 */
@@ -217,12 +217,12 @@ static wstring normFemininPortuguese(wstring& word) {
       if ((word[len-1]== u'n') && (word[len-2]== u'o')) {
         word[len-2]= u'ã';
         word[len-1]= u'o';
-        word[len]= u'\0';
+        word.erase(len);
         return(word);
       }
       /*  -ora  -> or */
       if ((word[len-1]== u'r') && (word[len-2]== u'o')) {
-        word[len]= u'\0';
+        word.erase(len);
         return(word);
       }
       /*  -osa  -> oso */
@@ -233,7 +233,7 @@ static wstring normFemininPortuguese(wstring& word) {
       /*  -esa  -> ês */
       if ((word[len-1]== u's') && (word[len-2]== u'e')) {
         word[len-2]= u'ê';
-        word[len]= u'\0';
+        word.erase(len);
         return(word);
       }
       /*  -ica  -> ico */

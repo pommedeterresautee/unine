@@ -46,23 +46,23 @@ if ((word[len]== u'e') && (word[len-1]== u'd') && (word[len-2]== u'h')) {
   }  /* end if len > 4 */
 if (len > 3) {   /* -ei  -> -  */
 if ((word[len]== u'i') && (word[len-1]== u'e')) {
-  word[len-1]= u'\0';
+  word.erase(len-1);
   return(word);
 }
 if ((word[len]== u't') && (word[len-1]== u'a')) {
-  word[len-1]= u'\0';
+  word.erase(len-1);
   return(word);
 }
 }  /* end if len > 3 */
 if (len > 2) {   /* plural    -t  or -(aeiouy)i */
 if ((word[len]== u't') || (word[len]== u's') || (word[len]== u'j')
       || (word[len]== u'e') || (word[len]== u'a')) {
-  word[len]= u'\0';
+  word.erase(len);
 }
 else {
   /*      if ((word[len]== u'i') && (IsVowel(word[len-1]))) { */
   if ((word[len]== u'i')) {
-    word[len]= u'\0';
+    word.erase(len);
   }
 }
 } /* end if (len > 2) */
@@ -99,13 +99,13 @@ static wstring norm2_finnish (wstring& word) {
 
   if (len > 7) {   /* -e, -o,  -u */
   if ((word[len]== u'e') || (word[len]== u'o') || (word[len]== u'u')) {
-    word[len]= u'\0';
+    word.erase(len);
     len--;
   }
   }
   if (len > 3) {   /* plural    -i  */
   if (word[len]== u'i') {
-    word[len]= u'\0';
+    word.erase(len);
   }
   removeDoubleKPT(word);
   } /* end if (len > 3) */
@@ -118,12 +118,12 @@ static wstring finnishStep1 (wstring&  word) {
   if (len > 7) {
     /*    -kin  */
     if ((word[len]== u'n') && (word[len-1]== u'i') && (word[len-2]== u'k')) {
-      word[len-2]= u'\0';
+      word.erase(len-2);
       return(finnishStep1(word));
     }
     /*    -ko  */
     if ((word[len]== u'o') && (word[len-1]== u'k')) {
-      word[len-1]= u'\0';
+      word.erase(len-1);
       return(finnishStep1(word));
     }
   } /* end if (len > 7) */
@@ -132,14 +132,14 @@ static wstring finnishStep1 (wstring&  word) {
       if ((word[len]== u'n') && (word[len-1]== u'e') && (word[len-2]== u'n')
             && (word[len-3]== u'i') && (word[len-4]== u'l') && (word[len-5]== u'l')
             && (word[len-6]== u'e') && (word[len-7]== u'd')) {
-            word[len-7]= u'\0';
+            word.erase(len-7);
         return(word);
       }
       /*    -dellisuus  for adverb  */
       if ((word[len]== u's') && (word[len-1]== u'u') && (word[len-2]== u'u')
             && (word[len-3]== u's') && (word[len-4]== u'i') && (word[len-5]== u'l')
             && (word[len-6]== u'l') && (word[len-7]== u'e') && (word[len-8]== u'd')) {
-            word[len-8]= u'\0';
+            word.erase(len-8);
         return(word);
       }
     } /* end if (len > 10) */
@@ -153,27 +153,27 @@ static wstring finnishStep2(wstring& word) {
   if (len > 4) {
     /*    -lla  */
     if ((word[len]== u'a') && (word[len-1]== u'l') && (word[len-2]== u'l')) {
-      word[len-2]= u'\0';
+      word.erase(len-2);
       return(word);
     }
     /*    -tse  */
     if ((word[len]== u'e') && (word[len-1]== u's') && (word[len-2]== u't')) {
-      word[len-2]= u'\0';
+      word.erase(len-2);
       return(word);
     }
     /*    -sti  */
     if ((word[len]== u'i') && (word[len-1]== u't') && (word[len-2]== u's')) {
-      word[len-2]= u'\0';
+      word.erase(len-2);
       return(word);
     }
     /*    -ni  */
     if ((word[len]== u'i') && (word[len-1]== u'n')) {
-      word[len-1]= u'\0';
+      word.erase(len-1);
       return(word);
     }
     /*    -a  if -aa  */
     if ((word[len]== u'a') && (word[len-1]== u'a')) {
-      word[len]= u'\0';
+      word.erase(len);
       return(word);
     }
   } /* end if (len > 4) */
@@ -189,26 +189,26 @@ static wstring finnishStep3 (wstring& word) {
     if ((word[len]== u'n') && (word[len-1]== u'e') &&
     (word[len-2]== u'n') && (word[len-3]== u'n')) {
       word[len-3]= u's';
-      word[len-2]= u'\0';
+      word.erase(len-2);
       return(word);
     }
     /* essive -ntena  -s  */
     if ((word[len]== u'a') && (word[len-1]== u'n') && (word[len-2]== u'e') &&
     (word[len-3]== u't') && (word[len-4]== u'n')) {
       word[len-4]= u's';
-      word[len-3]= u'\0';
+      word.erase(len-3);
       return(word);
     }
     /*  -tten  -s  */
     if ((word[len]== u'n') && (word[len-1]== u'e') && (word[len-2]== u't') &&
     (word[len-3]== u't')) {
-      word[len-3]= u'\0';
+      word.erase(len-3);
       return(word);
     }
     /* genitive plural   -eiden  -s  */
     if ((word[len]== u'n') && (word[len-1]== u'e') &&
     (word[len-2]== u'd') && (word[len-3]== u'i') && (word[len-4]== u'e')) {
-      word[len-4]= u'\0';
+      word.erase(len-4);
       return(word);
     }
   }
@@ -216,125 +216,125 @@ static wstring finnishStep3 (wstring& word) {
     /* komitatiivi plural   -neen  */
     if ((word[len]== u'n') && (word[len-1]== u'e') &&
     (word[len-2]== u'e') && (word[len-3]== u'n')) {
-      word[len-3]= u'\0';
+      word.erase(len-3);
       return(word);
     }
     /* illatiivi   -siin,  etc.  */
     if ((word[len]== u'n') && (word[len-1]== u'i') &&
     (word[len-2]== u'i') && (word[len-3]== u'n')) {
-      word[len-3]= u'\0';
+      word.erase(len-3);
       return(word);
     }
     /* illatiivi   -seen,  etc.  */
     if ((word[len]== u'n') && (word[len-1]== u'e') &&
     (word[len-2]== u'e') && (word[len-3]== u's')) {
-      word[len-3]= u'\0';
+      word.erase(len-3);
       return(word);
     }
     /* illatiivi   -h?n,  etc.  */
     if ((word[len]== u'n') && (IsVowel(word[len-1])) &&
     (word[len-2]== u'h')) {
-      word[len-2]= u'\0';
+      word.erase(len-2);
       return(word);
     }
     /* genitive plural   -teen,  etc.  */
     if ((word[len]== u'n') && (word[len-1]== u'e') &&
     (word[len-2]== u'e') && (word[len-3]== u't')) {
-      word[len-3]= u'\0';
+      word.erase(len-3);
       return(word);
     }
     /* genitive plural   -den  -s  */
     if ((word[len]== u'n') && (word[len-1]== u'e') &&
     (word[len-2]== u'd')) {
       word[len-2]= u's';
-      word[len-1]= u'\0';
+      word.erase(len-1);
       return(word);
     }
     /* genitive plural   -ksen  -s  */
     if ((word[len]== u'n') && (word[len-1]== u'e') &&
     (word[len-2]== u's') && (word[len-3]== u'k')) {
       word[len-3]= u's';
-      word[len-2]= u'\0';
+      word.erase(len-2);
       return(word);
     }
     /* komitatiivi plural   -neni  */
     if ((word[len]== u'n') && (word[len-1]== u'e') &&
     (word[len-2]== u'n') && (word[len-3]== u'i')) {
-      word[len-3]= u'\0';
+      word.erase(len-3);
       return(word);
     }
     /* inessiivi   -ssa  */
     if ((word[len]== u'a') && (word[len-1]== u's') && (word[len-2]== u's')) {
-      word[len-2]= u'\0';
+      word.erase(len-2);
       return(word);
     }
     /* elatiivi   -sta  */
     if ((word[len]== u'a') && (word[len-1]== u't') && (word[len-2]== u's')) {
-      word[len-2]= u'\0';
+      word.erase(len-2);
       return(word);
     }
     /* adessiivi   -lla  */
     if ((word[len]== u'a') && (word[len-1]== u'l') && (word[len-2]== u'l')) {
-      word[len-2]= u'\0';
+      word.erase(len-2);
       return(word);
     }
     /* ablatiivi   -lta  */
     if ((word[len]== u'a') && (word[len-1]== u't') && (word[len-2]== u'l')) {
-      word[len-2]= u'\0';
+      word.erase(len-2);
       return(word);
     }
     /* abessiivi   -tta  */
     if ((word[len]== u'a') && (word[len-1]== u't') && (word[len-2]== u't')) {
-      word[len-2]= u'\0';
+      word.erase(len-2);
       return(word);
     }
     /* translatiivi   -ksi  */
     if ((word[len]== u'i') && (word[len-1]== u's') && (word[len-2]== u'k')) {
-      word[len-2]= u'\0';
+      word.erase(len-2);
       return(word);
     }
     /* allatiivi   -lle  */
     if ((word[len]== u'e') && (word[len-1]== u'l') && (word[len-2]== u'l')) {
-      word[len-2]= u'\0';
+      word.erase(len-2);
       return(word);
     }
   } /* end if (len > 5) */
     if (len > 4) {
       /* essiivi   -na  */
       if ((word[len]== u'a') && (word[len-1]== u'n')) {
-        word[len-1]= u'\0';
+        word.erase(len-1);
         return(word);
       }
       /* komitatiivi   -ne-  */
       if ((word[len]== u'e') && (word[len-1]== u'n')) {
-        word[len-1]= u'\0';
+        word.erase(len-1);
         return(word);
       }
       if ((word[len]== u'i') && (word[len-1]== u'e') && (word[len-2]== u'n')) {
-        word[len-2]= u'\0';
+        word.erase(len-2);
         return(word);
       }
     } /* end if (len > 4) */
       if (len > 3) {
         /* partitiivi   -(t,j)a  */
         if ((word[len]== u'a') && ((word[len-1]== u't') || (word[len-1]== u'j'))) {
-          word[len-1]= u'\0';
+          word.erase(len-1);
           return(word);
         }
         if (word[len]== u'a') {
-          word[len]= u'\0';
+          word.erase(len);
           return(word);
         }
         /* illatiivi   -an, -en, -on, -in, -un, -yn, etc.  */
         if ((word[len]== u'n') && ((word[len-1]== u'a') || (word[len-1]== u'e')
                                    || (word[len-1]== u'o') || (word[len-1]== u'i')
                                    || (word[len-1]== u'u') || (word[len-1]== u'y'))) {
-                                   word[len-1]= u'\0';
+                                   word.erase(len-1);
           return(word);
         }
         /* genetiivi or instruktiivi   -n  */
         if (word[len]== u'n') {
-          word[len]= u'\0';
+          word.erase(len);
           return(word);
         }
       } /* end if (len > 3) */

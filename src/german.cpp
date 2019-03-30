@@ -46,35 +46,35 @@ wstring remove_Step1 (wstring& word) {
 
   if (len > 4) {
     if (word[len]==u'n' && word[len-1]==u'r' && word[len-2]==u'e') {
-      word[len-2]=u'\0';  /*  ending with -ern ->   */
+      word.erase(len-2);  /*  ending with -ern ->   */
 return(word);
     }
   }
   if (len > 3) {
     if (word[len]==u'm' && word[len-1]==u'e') {
-      word[len-1]=u'\0';  /*  ending with -em ->  */
+      word.erase(len-1);  /*  ending with -em ->  */
 return(word);
     }
     if (word[len]==u'n' && word[len-1]==u'e') {
-      word[len-1]=u'\0';  /*  ending with -en ->  */
+      word.erase(len-1);  /*  ending with -en ->  */
 return(word);
     }
     if (word[len]==u'r' && word[len-1]==u'e') {
-      word[len-1]=u'\0';  /*  ending with -er ->  */
+      word.erase(len-1);  /*  ending with -er ->  */
 return(word);
     }
     if (word[len]==u's' && word[len-1]==u'e') {
-      word[len-1]=u'\0';  /*  ending with -es ->  */
+      word.erase(len-1);  /*  ending with -es ->  */
 return(word);
     }
   }
   if (len > 2) {
     if (word[len]==u'e') {
-      word[len]=u'\0';  /*  ending with -e ->  */
+      word.erase(len);  /*  ending with -e ->  */
 return(word);
     }
     if (word[len]==u's' && STEnding(word[len-1])) {
-      word[len]=u'\0';  /*  ending with -s ->  */
+      word.erase(len);  /*  ending with -s ->  */
 return(word);
     }
   }
@@ -86,21 +86,21 @@ wstring remove_Step2 (wstring& word) {
 
   if (len > 4) {
     if (word[len]==u't' && word[len-1]==u's' && word[len-2]==u'e') {
-      word[len-2]=u'\0';  /*  ending with -est ->   */
+      word.erase(len-2);  /*  ending with -est ->   */
 return(word);
     }
   }
   if (len > 3) {
     if (word[len]==u'r' && word[len-1]==u'e') {
-      word[len-1]=u'\0';  /*  ending with -er ->  */
+      word.erase(len-1);  /*  ending with -er ->  */
 return(word);
     }
     if (word[len]==u'n' && word[len-1]==u'e') {
-      word[len-1]=u'\0';  /*  ending with -en ->  */
+      word.erase(len-1);  /*  ending with -en ->  */
 return(word);
     }
     if (word[len]==u't' && word[len-1]==u's' && STEnding(word[len-2])) {
-      word[len-1]=u'\0';  /*  ending with -st ->  */
+      word.erase(len-1);  /*  ending with -st ->  */
 return(word);
     }
   }

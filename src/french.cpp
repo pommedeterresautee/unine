@@ -82,19 +82,32 @@ wstring normfrenchword(wstring& word) {
     }
 
     if (len > 3) {
-      if (word[len]==u'e' && word[len-1]==u'i')
-      {word[len-1]=u'\0';len = len -2;}
+      if (word[len]==u'e' && word[len-1]==u'i') {
+        word.erase(len-1);
+        // word[len-1]=u'\0';
+        len = len -2;
+      }
     }
     if (len > 3) {
-      if (word[len]==u'r')
-      {word[len]=u'\0';len--;}
-      if (word[len]==u'e')
-      {word[len]=u'\0';len--;}
+      if (word[len]==u'r') {
+        word.erase(len);
+        // word[len]=u'\0';
+        len--;
+      }
+      if (word[len]==u'e') {
+        word.erase(len);
+        // word[len]=u'\0';
+        len--;
+      }
       /*    if (word[len]==u'é')  */
-      if (word[len]==u'e')
-      {word[len]=u'\0';len--;}
+      if (word[len]==u'e') {
+        word.erase(len);
+        // word[len]=u'\0';
+        len--;
+      }
       if (word[len] == word[len-1])
-        word[len]=u'\0';
+        word.erase(len);
+        // word[len]=u'\0';
     }
     return(word);
 }
@@ -107,19 +120,22 @@ wstring french_stemming_word(wstring& word) {
         if (word[len-1]==u'u' && word[len-2]==u'a' && word[len-3]!=u'e') {
           word[len-1]=u'l';  /*  chevaux -> cheval  */
         }                 /*  error :  travaux -> traval but not travail  */
-      word[len]=u'\0';      /*  anneaux -> anneau,  neveux -> neveu  */
+      word.erase(len);
+      // word[len]=u'\0';      /*  anneaux -> anneau,  neveux -> neveu  */
       len--;               /*  error :  aulx -> aul but not ail (rare)  */
       }
     }                       /*  error :  yeux -> yeu but not oeil (rare)  */
       if (len > 2) {
         if (word[len]==u'x') {
-          word[len]=u'\0';      /*  peaux -> peau,  poux -> pou  */
-      len--;               /*  error :  affreux -> affreu */
+          word.erase(len);
+          // word[len]=u'\0';      /*  peaux -> peau,  poux -> pou  */
+          len--;               /*  error :  affreux -> affreu */
         }
       }
 
       if (len > 2 && word[len]==u's') {  /*  remove final --s --> -- */
-      word[len]=u'\0';
+      word.erase(len);
+        // word[len]=u'\0';
         len--;
       }
 
@@ -128,7 +144,8 @@ wstring french_stemming_word(wstring& word) {
           word[len-3]==u'm' && word[len-4]==u'e' && word[len-5]==u's' &&
           word[len-6]==u's' && word[len-7]==u'i') {
         word[len-6]=u'r';       /* investissement --> investir */
-      word[len-5]=u'\0';
+      word.erase(len-5);
+      // word[len-5]=u'\0';
       return(normfrenchword(word));
       }
       }
@@ -137,7 +154,8 @@ wstring french_stemming_word(wstring& word) {
       if (word[len]==u't'   && word[len-1]==u'n' && word[len-2]==u'a' &&
           word[len-3]==u's' && word[len-4]==u's' && word[len-5]==u'i') {
         word[len-4]=u'r';     /* assourdissant --> assourdir */
-      word[len-3]=u'\0';
+      word.erase(len-3);
+      // word[len-3]=u'\0';
       return(normfrenchword(word));
       }
       }
@@ -145,10 +163,12 @@ wstring french_stemming_word(wstring& word) {
       if (len > 5) {    /* --ement  -->   --e */
       if (word[len]==u't'   && word[len-1]==u'n' && word[len-2]==u'e' &&
           word[len-3]==u'm' && word[len-4]==u'e') {
-        word[len-3]=u'\0';       /* pratiquement --> pratique */
+        word.erase(len-3);
+        // word[len-3]=u'\0';       /* pratiquement --> pratique */
       if (word[len-5]==u'v' && word[len-6]==u'i') {
         word[len-5]=u'f';     /* administrativement --> administratif */
-      word[len-4]=u'\0';
+      word.erase(len-4);
+      // word[len-4]=u'\0';
       }
       return(normfrenchword(word));
       }
@@ -160,7 +180,8 @@ wstring french_stemming_word(wstring& word) {
           word[len-6]==u'c' && word[len-7]==u'i' && word[len-8]==u'f') {
         word[len-6]=u'e';
         word[len-5]=u'r';
-        word[len-4]=u'\0';   /* justificatrice --> justifier */
+        word.erase(len-4);
+        // word[len-4]=u'\0';   /* justificatrice --> justifier */
       return(normfrenchword(word));
       }
       }
@@ -171,7 +192,8 @@ wstring french_stemming_word(wstring& word) {
           word[len-6]==u'i' && word[len-7]==u'f') {
         word[len-5]=u'e';
         word[len-4]=u'r';
-        word[len-3]=u'\0';   /* justificateur --> justifier */
+        word.erase(len-3);
+        // word[len-3]=u'\0';   /* justificateur --> justifier */
       return(normfrenchword(word));
       }
       }
@@ -184,7 +206,8 @@ wstring french_stemming_word(wstring& word) {
         word[len-5]=u'u';
         word[len-4]=u'e';
         word[len-3]=u'r';
-        word[len-2]=u'\0';   /* educatrice--> eduquer */
+        word.erase(len-2);
+        // word[len-2]=u'\0';   /* educatrice--> eduquer */
       return(normfrenchword(word));
       }
       }
@@ -196,7 +219,8 @@ wstring french_stemming_word(wstring& word) {
         word[len-4]=u'u';
         word[len-3]=u'e';
         word[len-2]=u'r';
-        word[len-1]=u'\0';   /* communicateur--> communiquer */
+        word.erase(len-1);
+        // word[len-1]=u'\0';   /* communicateur--> communiquer */
       return(normfrenchword(word));
       }
       }
@@ -206,7 +230,8 @@ wstring french_stemming_word(wstring& word) {
           word[len-3]==u'r' && word[len-4]==u't' && word[len-5]==u'a') {
         word[len-5]=u'e';
         word[len-4]=u'r';
-        word[len-3]=u'\0';   /* accompagnatrice--> accompagner */
+        word.erase(len-3);
+        // word[len-3]=u'\0';   /* accompagnatrice--> accompagner */
       return(normfrenchword(word));
       }
       }
@@ -216,7 +241,8 @@ wstring french_stemming_word(wstring& word) {
           word[len-3]==u't' && word[len-4]==u'a') {
         word[len-4]=u'e';
         word[len-3]=u'r';
-        word[len-2]=u'\0';   /* administrateur--> administrer */
+        word.erase(len-2);
+        // word[len-2]=u'\0';   /* administrateur--> administrer */
       return(normfrenchword(word));
       }
       }
@@ -227,7 +253,8 @@ wstring french_stemming_word(wstring& word) {
         word[len-3]=u'e';
         word[len-2]=u'u';
         word[len-1]=u'r';  /* productrice --> producteur */
-      word[len]=u'\0';   /* matrice --> mateur ? */
+      word.erase(len);
+      // word[len]=u'\0';   /* matrice --> mateur ? */
       len--;
       }
       }
@@ -235,7 +262,8 @@ wstring french_stemming_word(wstring& word) {
       if (len > 4) {    /* --ième  -->   -- */
       if (word[len]==u'e' && word[len-1]==u'm' && word[len-2]==u'è' &&
           word[len-3]==u'i') {
-        word[len-3]=u'\0';
+        word.erase(len-3);
+        // word[len-3]=u'\0';
         return(normfrenchword(word));
       }
       }
@@ -244,7 +272,8 @@ wstring french_stemming_word(wstring& word) {
       if (word[len]==u'e'   && word[len-1]==u's' && word[len-2]==u'u' &&
           word[len-3]==u'e' && word[len-4]==u't') {
         word[len-2]=u'r';
-        word[len-1]=u'\0';       /* acheteuse --> acheter */
+        word.erase(len-1);
+        // word[len-1]=u'\0';       /* acheteuse --> acheter */
       return(normfrenchword(word));
       }
       }
@@ -253,7 +282,8 @@ wstring french_stemming_word(wstring& word) {
       if (word[len]==u'r'   && word[len-1]==u'u' && word[len-2]==u'e' &&
           word[len-3]==u't') {
         word[len-1]=u'r';
-        word[len]=u'\0';       /* planteur --> planter */
+        word.erase(len);
+        // word[len]=u'\0';       /* planteur --> planter */
       return(normfrenchword(word));
       }
       }
@@ -261,7 +291,8 @@ wstring french_stemming_word(wstring& word) {
       if (len > 4) {    /* --euse  -->   --eu- */
       if (word[len]==u'e' && word[len-1]==u's' && word[len-2]==u'u' &&
           word[len-3]==u'e') {
-        word[len-1]=u'\0';       /* poreuse --> poreu-,  plieuse --> plieu- */
+        word.erase(len-1);
+        // word[len-1]=u'\0';       /* poreuse --> poreu-,  plieuse --> plieu- */
       return(normfrenchword(word));
       }
       }
@@ -270,7 +301,8 @@ wstring french_stemming_word(wstring& word) {
       if (word[len]==u'e' && word[len-1]==u'r' && word[len-2]==u'è') {
         word[len-2]=u'e';
         word[len-1]=u'r';
-        word[len]=u'\0';  /* bijoutière --> bijoutier,  caissière -> caissier */
+        word.erase(len);
+        // word[len]=u'\0';  /* bijoutière --> bijoutier,  caissière -> caissier */
       return(normfrenchword(word));
       }
       }
@@ -278,7 +310,8 @@ wstring french_stemming_word(wstring& word) {
       if (len > 6) {    /* -----ive  -->   -----if */
       if (word[len]==u'e' && word[len-1]==u'v' && word[len-2]==u'i') {
         word[len-1]=u'f';   /* but not convive */
-      word[len]=u'\0';   /* abrasive --> abrasif */
+        word.erase(len);
+      // word[len]=u'\0';   /* abrasive --> abrasif */
       return(normfrenchword(word));
       }
       }
@@ -287,7 +320,8 @@ wstring french_stemming_word(wstring& word) {
       if (word[len]==u'e' && word[len-1]==u'l' && word[len-2]==u'l' &&
           word[len-3]==u'o' && (word[len-4]==u'f' || word[len-4]==u'm')) {
         word[len-2]=u'u';
-        word[len-1]=u'\0';  /* folle --> fou */
+        word.erase(len-1);
+        // word[len-1]=u'\0';  /* folle --> fou */
       return(normfrenchword(word));
       }
       }
@@ -295,7 +329,8 @@ wstring french_stemming_word(wstring& word) {
       if (len > 8) {    /* ----nnelle  -->   ----n */
         if (word[len]==u'e'   && word[len-1]==u'l' && word[len-2]==u'l' &&
             word[len-3]==u'e' && word[len-4]==u'n' && word[len-5]==u'n') {
-          word[len-4]=u'\0';  /* personnelle --> person */
+          word.erase(len-4);
+          // word[len-4]=u'\0';  /* personnelle --> person */
           return(normfrenchword(word));
         }
       }
@@ -303,7 +338,8 @@ wstring french_stemming_word(wstring& word) {
       if (len > 8) {    /* ----nnel  -->   ----n */
         if (word[len]==u'l'   && word[len-1]==u'e' && word[len-2]==u'n' &&
             word[len-3]==u'n') {
-          word[len-2]=u'\0';  /* personnel --> person */
+          word.erase(len-2);
+          // word[len-2]=u'\0';  /* personnel --> person */
           return(normfrenchword(word));
         }
       }
@@ -311,7 +347,8 @@ wstring french_stemming_word(wstring& word) {
       if (len > 3) {    /* --ète  -->  et */
         if (word[len]==u'e' && word[len-1]==u't' && word[len-2]==u'è') {
           word[len-2]=u'e';
-          word[len]=u'\0';  /* complète --> complet */
+          word.erase(len);
+          // word[len]=u'\0';  /* complète --> complet */
           len--;
         }
       }
@@ -319,7 +356,8 @@ wstring french_stemming_word(wstring& word) {
       if (len > 7) {    /* -----ique  -->   */
         if (word[len]==u'e' && word[len-1]==u'u' && word[len-2]==u'q' &&
             word[len-3]==u'i') {
-          word[len-3]=u'\0';  /* aromatique --> aromat */
+          word.erase(len-3);
+          // word[len-3]=u'\0';  /* aromatique --> aromat */
           len = len-4;
         }
       }
@@ -327,7 +365,8 @@ wstring french_stemming_word(wstring& word) {
       if (len > 7) {    /* -----esse -->    */
         if (word[len]==u'e' && word[len-1]==u's' && word[len-2]==u's' &&
             word[len-3]==u'e') {
-          word[len-2]=u'\0';    /* faiblesse --> faible */
+          word.erase(len-2);
+          // word[len-2]=u'\0';    /* faiblesse --> faible */
           return(normfrenchword(word));
         }
       }
@@ -335,7 +374,8 @@ wstring french_stemming_word(wstring& word) {
       if (len > 6) {    /* ---inage -->    */
         if (word[len]==u'e' && word[len-1]==u'g' && word[len-2]==u'a' &&
             word[len-3]==u'n' && word[len-4]==u'i') {
-          word[len-2]=u'\0';  /* patinage --> patin */
+          word.erase(len-2);
+          // word[len-2]=u'\0';  /* patinage --> patin */
           return(normfrenchword(word));
         }
       }
@@ -344,7 +384,8 @@ wstring french_stemming_word(wstring& word) {
         if (word[len]==u'n'   && word[len-1]==u'o' && word[len-2]==u'i' &&
             word[len-3]==u't' && word[len-4]==u'a' && word[len-5]==u's' &&
             word[len-6]==u'i') {
-          word[len-6]=u'\0';     /* sonorisation --> sonor */
+          word.erase(len-6);
+          // word[len-6]=u'\0';     /* sonorisation --> sonor */
           if (len > 11 && word[len-7]==u'l' && word[len-8]==u'a' && word[len-9]==u'u')
             word[len-8]=u'e';  /* ritualisation --> rituel */
           return(normfrenchword(word));
@@ -354,7 +395,8 @@ wstring french_stemming_word(wstring& word) {
       if (len > 8) {    /* ---isateur -->   - */
         if (word[len]==u'r'   && word[len-1]==u'u' && word[len-2]==u'e' && word[len-3]==u't' &&
             word[len-4]==u'a' && word[len-5]==u's' && word[len-6]==u'i') {
-          word[len-6]=u'\0';  /* colonisateur --> colon */
+          word.erase(len-6);
+          // word[len-6]=u'\0';  /* colonisateur --> colon */
           return(normfrenchword(word));
         }
       }
@@ -362,7 +404,8 @@ wstring french_stemming_word(wstring& word) {
       if (len > 7) {    /* ----ation -->   - */
         if (word[len]==u'n'   && word[len-1]==u'o' && word[len-2]==u'i' &&
             word[len-3]==u't' && word[len-4]==u'a') {
-          word[len-4]=u'\0';  /* nomination --> nomin */
+          word.erase(len-4);
+          // word[len-4]=u'\0';  /* nomination --> nomin */
           return(normfrenchword(word));
         }
       }
@@ -370,7 +413,8 @@ wstring french_stemming_word(wstring& word) {
       if (len > 7) {    /* ----ition -->   - */
         if (word[len]==u'n'   && word[len-1]==u'o' && word[len-2]==u'i' &&
             word[len-3]==u't' && word[len-4]==u'i') {
-          word[len-4]=u'\0';  /* disposition --> dispos */
+          word.erase(len-4);
+          // word[len-4]=u'\0';  /* disposition --> dispos */
           return(normfrenchword(word));
         }
       }
