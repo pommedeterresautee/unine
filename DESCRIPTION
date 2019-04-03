@@ -1,7 +1,7 @@
 Package: unine
 Type: Package
 Title: Unine Light Stemmer
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: c(person("Michaël", "Benesty", role = c("aut", "cre", "cph"), email = "michael@benesty.fr"),
   person("Jacques Savoy", role = c("cph"), email = "Jacques.Savoy@unine.ch"))
 Maintainer: Michaël Benesty <michael@benesty.fr>
