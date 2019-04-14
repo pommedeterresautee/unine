@@ -1,3 +1,7 @@
+# version 0.2.0 - 14/04/19
+New version with update in C++ code
+Pass Rhub Cran check
+
 # version 0.1.0 - 26/03/19
 reencode DOI containing forbidden character
 
